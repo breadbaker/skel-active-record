@@ -5,17 +5,35 @@ describe Cat do
   subject(:cat) do
     Cat.new
   end
-
-  describe "#name" do
-    it "can set name by new_attr_accessor" do
-      cat.name ="Salli"
-      expect(cat.name).to eq("Salli")
+  describe "can call accessors" do
+    it "has methods name and color" do
+      expect(cat.respond_to?(:name)).to eq(true)
+      expect(cat.respond_to?(:color)).to eq(true)
     end
   end
-  describe "#color" do
-    it "can set color by new_attr_accessor" do
+
+  describe "does not" do
+    it "can set color" do
       cat.color ="Brown"
       expect(cat.color).to eq("Brown")
     end
   end
+  before do
+    cat.name ="Salli"
+    cat.color ="Brown"
+  end
+
+
+
+  describe "#name" do
+    it "can set name" do
+      expect(cat.name).to eq("Salli")
+    end
+  end
+  describe "#color" do
+    it "can set color" do
+      expect(cat.color).to eq("Brown")
+    end
+  end
+
 end

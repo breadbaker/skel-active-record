@@ -31,6 +31,34 @@ module Associatable
   end
 
   def belongs_to(name, params = {})
+    self.send(:define_method,name) do |v|
+      #self.class.where(:p => "Breakfast")[0]
+      # clause = params.map do |k,v|
+#         "#{k}='#{v}'"
+#       end.join(' AND ')
+#       p clause
+      results = DBConnection.execute(<<-SQL)
+        SELECT
+          humans.*
+        FROM
+          cats
+          JOIN
+          humans
+          on
+          human.id = cats.human_id
+        WHERE
+        id = #{self.class.id}
+
+
+      SQL
+
+      return parse_all(results).first unless results.empty?
+
+      nil
+    end
+    # :human
+#     :class_name => "Human", :primary_key => :id, :foreign_key => :owner_id
+
   end
 
   def has_many(name, params = {})
