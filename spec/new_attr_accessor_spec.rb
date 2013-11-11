@@ -1,9 +1,9 @@
 #require 'rspec'
 require 'new_attr_accessor'
 
-describe Cat do
+describe Oat do
   subject(:cat) do
-    Cat.new
+    Oat.new
   end
   describe "can call accessors" do
     it "has methods name and color" do

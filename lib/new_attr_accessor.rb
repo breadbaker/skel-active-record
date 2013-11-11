@@ -11,11 +11,7 @@ class Object
     end
   end
 end
-class Cat
-  new_attr_accessor :name
-
-  private
-    attr_accessor :color
-
+class Oat
+  new_attr_accessor :name, :color
 
 end

@@ -38,9 +38,7 @@ class SQLObject < MassObject
         id = #{id}
     SQL
 
-    return parse_all(results).first unless results.empty?
-
-    nil
+    parse_all(results).first
   end
 
   # executes query that creates record in db with objects attribute values.
